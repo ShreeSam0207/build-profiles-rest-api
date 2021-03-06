@@ -1,11 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from profiles_api import serializers
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication as token
+from rest_framework import filters
+
+from profiles_api import serializers
 from profiles_api import models
 from profiles_api import permissions
-from rest_framework.authentication import TokenAuthentication as token
 
 class HelloApiview(APIView):
     """Test API View"""
@@ -100,3 +102,7 @@ class UserprofileViewSet(viewsets.ModelViewSet):
     #add the permissions UpdateOwnProfile. every request made will pass through Permissions.py files
     # and checks if it has has_object_permission function to see if the user has necessary permission
     permission_classes=(permissions.UpdateOwnProfile,)
+    #, is added so Python takes it as a tuple and not a single item
+    filter_backends=(filters.SearchFilter,)
+    #search_fields will say which fields will be searchable
+    search_fields= ('name','email',)#search a record through name and email
