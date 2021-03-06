@@ -3,6 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 
 
+
 class UserProfileManager(BaseUserManager):
     """Class required by Django for managing our users from the management
     command.
