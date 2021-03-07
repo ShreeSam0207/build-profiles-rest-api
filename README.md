@@ -17,10 +17,10 @@
     4. Mod Header chrome extension
 
 #Commands:
-vagrant development server - vagrant init ubuntu/bioninc64
-Python virtual environment in vagrant - Python -m venv <<path>>
-Activate the virtual env - source ~/env/bin/activate
-Installed python packages on python virtual env
-Created a new Django app - djangoadmin startproject <<project name>> .
-Start the app - python startapp <<app name>>
+1. vagrant development server - vagrant init ubuntu/bioninc64
+2. Python virtual environment in vagrant - Python -m venv <<path>>
+3. Activate the virtual env - source ~/env/bin/activate
+4. Installed python packages on python virtual env
+5. Created a new Django app - djangoadmin startproject <<project name>> .
+6. Start the app - python startapp <<app name>>
     
