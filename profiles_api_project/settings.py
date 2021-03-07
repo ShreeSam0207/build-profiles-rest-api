@@ -26,7 +26,10 @@ SECRET_KEY = '@b@675qb50-798%59fga(tzo$+1436xtg(rgdgyib492filzz9'
 #when run on vagrant server, debug will be True, in AWS-  False
 DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'ec2-54-174-81-203.compute-1.amazonaws.com']
 
 
 # Application definition
