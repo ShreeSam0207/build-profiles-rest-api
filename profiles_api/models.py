@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-
-
+from django.conf import settings
 
 class UserProfileManager(BaseUserManager):
     """Class required by Django for managing our users from the management
@@ -78,3 +77,25 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         """What to show when we output an object as a string."""
 
         return self.email
+
+class ProfileFeedItem(models.Model):
+    """Profile status update"""
+    #every time a user updates their time, their feed gets updated
+    #uses a foreign key relationship to a remote models
+    #allows us to maintain the integrity as we cant update a feed item to a user who does not exist
+    user_profile = models.ForeignKey(
+    #retrieves the auth user model from settings file
+        settings.AUTH_USER_MODEL,
+        #what happens when we remove a user and profile feed items associated with it
+        #We use cascade here to cascade down the changes and remove the associated feed items
+        #another option is models.setnull to set the model to null for which the user is removed
+        on_delete = models.CASCADE
+        )
+    status_text = models.CharField(max_length=255)
+    #every time we created a new item, Automatically add the date time when the item was created
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    #convert model instance to string
+    def __str__(self):
+        """Return the model as a string"""
+        return self.status_text
