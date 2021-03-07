@@ -1,7 +1,7 @@
 #Profile Rest API Project using Python and Django Rest Framework
 
 #Functionalities:
-1. Creates, update,manage and delete user profiles
+1. Create, update,manage and delete user profiles
 2. Authenticate using username and password
 3. Manage user profile feed items
 4. Create and manage development server (Vagrant)
