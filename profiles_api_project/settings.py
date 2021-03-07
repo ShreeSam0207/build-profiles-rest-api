@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@b@675qb50-798%59fga(tzo$+1436xtg(rgdgyib492filzz9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#when run on vagrant server, debug will be True, in AWS-  False
+DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
 ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
 
@@ -123,3 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
+
+#Django will store all the static files here in STATIC_ROOT location when we run collectstatic command
+#telling the collectstatic command to store the static files in STATIC_ROOT location
+STATIC_ROOT = 'static/'
